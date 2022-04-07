@@ -1,6 +1,5 @@
 package org.projedata.industry.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -19,8 +18,8 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "feedstock")
-public class Feedstock {
+@Table(name = "/user")
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,13 +29,22 @@ public class Feedstock {
 	@Size(max = 100)
 	private String name;
 	
+	@Email
 	@NotNull
-	@Digits(integer=4, fraction=2)
-	private BigDecimal quantity;
-
-	@OneToMany(mappedBy = "feedstock", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("feedstock")
+	private String email;
+	
+	@NotBlank
+	@Size(max = 100)
+	private String password;
+	
+	private String photo;
+	
+	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("user")
 	private List<Product> product = new ArrayList<>();
+
+	
 	
 	public long getId() {
 		return id;
@@ -54,12 +62,37 @@ public class Feedstock {
 		this.name = name;
 	}
 
-	public BigDecimal getQuantity() {
-		return quantity;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setQuantity(BigDecimal quantity) {
-		this.quantity = quantity;
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
+	
 	
 }
