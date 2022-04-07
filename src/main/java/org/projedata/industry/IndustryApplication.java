@@ -8,6 +8,11 @@ public class IndustryApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(IndustryApplication.class, args);
+		
+		System.out.println("");
+		System.out.println("");
+		System.out.println("Server On!!!");
+
 	}
 
 }

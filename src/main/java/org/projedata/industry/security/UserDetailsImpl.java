@@ -1,4 +1,4 @@
-package org.projedata.industry.security;
+	package org.projedata.industry.security;
 
 import java.util.Collection;
 
@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserDetailsImpl implements UserDetails {
-	
+
 	private static final long serialVersionUID = 1L;
 	private String email;
 	private String password;
@@ -17,21 +17,22 @@ public class UserDetailsImpl implements UserDetails {
 		this.password = user.getPassword();
 	}
 	
+	public UserDetailsImpl() {
+		super();
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
 		return password;
 	}
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
 		return email;
 	}
 
@@ -58,4 +59,5 @@ public class UserDetailsImpl implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
-}
+	
+	}
