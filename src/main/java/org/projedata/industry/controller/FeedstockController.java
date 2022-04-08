@@ -39,8 +39,13 @@ public class FeedstockController {
 	}
 	
 	@GetMapping("/name/{name}")
-	public ResponseEntity<List<Feedstock>> getByName (@PathVariable String name) {
-		return ResponseEntity.ok(repository.findAllByNameContainingIgnoreCase(name));
+	public ResponseEntity<List<Feedstock>> getByName(@PathVariable String name) {
+		List<Feedstock> list = repository.findAllByNameContainingIgnoreCase(name);
+		if (list.isEmpty()) {
+			return ResponseEntity.status(204).build();
+		} else {
+			return ResponseEntity.status(200).body(list);
+		}
 	}
 	
 	@PostMapping
