@@ -33,6 +33,8 @@ public class Feedstock {
 	@NotNull
 	@Digits(integer=4, fraction=2)
 	private BigDecimal quantity;
+	
+	private String photo;
 
 	@OneToMany(mappedBy = "feedstock", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("feedstock")
@@ -61,5 +63,23 @@ public class Feedstock {
 	public void setQuantity(BigDecimal quantity) {
 		this.quantity = quantity;
 	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
+	
+	
 	
 }

@@ -31,6 +31,8 @@ public class Product {
 	@Digits(integer=4, fraction=2)
 	private BigDecimal price;
 	
+	private String photo;
+	
 	@ManyToOne 
 	@JsonIgnoreProperties("product")
 	private User user;
@@ -70,5 +72,13 @@ public class Product {
 	public void setFeedstock(Feedstock feedstock) {
 		this.feedstock = feedstock;
 	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	
+	
 		
 }
