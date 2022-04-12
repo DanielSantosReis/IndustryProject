@@ -30,10 +30,10 @@ public class Feedstock {
 	private int quantity;
 	
 	private String photo;
-	
+
 	@NotNull
 	@Size(min=3, max=100)
-	private Feedstock feedstock;
+	private String feedstock;
 
 	@OneToMany(mappedBy = "feedstock", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("feedstock")
@@ -78,15 +78,13 @@ public class Feedstock {
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
-	
-	public Feedstock getFeedstock() {
+
+	public String getFeedstock() {
 		return feedstock;
 	}
 
-	public void setFeedstock(Feedstock feedstock) {
+	public void setFeedstock(String feedstock) {
 		this.feedstock = feedstock;
 	}
-
-
 	
 }

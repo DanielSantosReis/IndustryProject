@@ -41,6 +41,7 @@ public class UserService {
 				email.get().setId(user.get().getId()); 
 				email.get().setName(user.get().getName());
 				email.get().setPhoto(user.get().getPhoto());
+				email.get().setPassword(user.get().getPassword());
 				
 				return email;
 				
