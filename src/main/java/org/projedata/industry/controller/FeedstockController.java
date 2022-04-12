@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.projedata.industry.model.Feedstock;
 import org.projedata.industry.repository.FeedstockRepository;
+	
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/feedstock")
-@CrossOrigin("*")
+@CrossOrigin(origins= "*", allowedHeaders = "*")
 public class FeedstockController {
 	
 	@Autowired

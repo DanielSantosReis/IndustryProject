@@ -10,9 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -26,15 +24,13 @@ public class User {
 	private long id;
 	
 	@NotBlank
-	@Size(max = 100)
+	@Size(min=3, max=100)
 	private String name;
 	
-	@Email
-	@NotNull
 	private String email;
 	
 	@NotBlank
-	@Size(max = 100)
+	@Size(min=3, max=100)
 	private String password;
 	
 	private String photo;
@@ -42,7 +38,7 @@ public class User {
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("user")
-	private List<Product> product = new ArrayList<>();
+	private List<Product> products = new ArrayList<>();
 
 	
 	
@@ -86,12 +82,12 @@ public class User {
 		this.photo = photo;
 	}
 
-	public List<Product> getProduct() {
-		return product;
+	public List<Product> getProducts() {
+		return products;
 	}
 
-	public void setProduct(List<Product> product) {
-		this.product = product;
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 	
 	

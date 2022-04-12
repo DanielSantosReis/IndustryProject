@@ -24,7 +24,7 @@ public class Product {
 	private long id;
 	
 	@NotBlank
-	@Size(max = 100)
+	@Size(min=3, max=100)
 	private String name;
 	
 	@NotNull
@@ -33,12 +33,14 @@ public class Product {
 	
 	private String photo;
 	
+	private int quantity;
+	
 	@ManyToOne 
-	@JsonIgnoreProperties("product")
+	@JsonIgnoreProperties("products")
 	private User user;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("product")
+	@JsonIgnoreProperties("products")
 	private Feedstock feedstock;
 	
 	
@@ -78,7 +80,11 @@ public class Product {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	
-	
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 		
 }

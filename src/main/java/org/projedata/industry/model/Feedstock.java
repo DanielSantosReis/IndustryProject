@@ -1,6 +1,5 @@
 package org.projedata.industry.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -26,19 +23,21 @@ public class Feedstock {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotBlank
-	@Size(max = 100)
+	@NotNull
+	@Size(min=3, max=100)
 	private String name;
 	
-	@NotNull
-	@Digits(integer=4, fraction=2)
-	private BigDecimal quantity;
+	private int quantity;
 	
 	private String photo;
+	
+	@NotNull
+	@Size(min=3, max=100)
+	private Feedstock feedstock;
 
 	@OneToMany(mappedBy = "feedstock", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("feedstock")
-	private List<Product> product = new ArrayList<>();
+	private List<Product> products = new ArrayList<>();
 	
 	public long getId() {
 		return id;
@@ -55,12 +54,12 @@ public class Feedstock {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public BigDecimal getQuantity() {
+	
+	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(BigDecimal quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
@@ -72,14 +71,22 @@ public class Feedstock {
 		this.photo = photo;
 	}
 
-	public List<Product> getProduct() {
-		return product;
+	public List<Product> getProducts() {
+		return products;
 	}
 
-	public void setProduct(List<Product> product) {
-		this.product = product;
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 	
-	
+	public Feedstock getFeedstock() {
+		return feedstock;
+	}
+
+	public void setFeedstock(Feedstock feedstock) {
+		this.feedstock = feedstock;
+	}
+
+
 	
 }
