@@ -34,11 +34,7 @@ public class Product {
 	private String photo;
 	
 	private int quantity;
-	
-	@ManyToOne 
-	@JsonIgnoreProperties("products")
-	private User user;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("products")
 	private Feedstock feedstock;
@@ -62,12 +58,7 @@ public class Product {
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
+	
 	public Feedstock getFeedstock() {
 		return feedstock;
 	}
